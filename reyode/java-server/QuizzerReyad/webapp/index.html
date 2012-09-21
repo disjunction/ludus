@@ -1,0 +1,29 @@
+<script src="/reyad/rpc-client/rpc.js"></script>
+<script>
+function run()
+{
+    var query = document.getElementById('dictForm').query.value;
+    var service = new rpc.ServiceProxy("/reyad/xmlrpc", {
+        asynchronous: true,  //default value, but if otherwise error raised
+        protocol: "XML-RPC", //default value, but if otherwise error raised
+        sanitize: false,     //explicit false required, otherwise error raised
+        methods: ['RandomQuizRpc.getRandomDescription', 'Quizzer.getOne', 'Quizzer.test1', 'Quizzer.test2'],    //explicit list required, otherwise error raised
+        callbackParamName: 'callback'
+});
+    service.Quizzer.test2({params: [],
+		onSuccess: function(response){
+			console.log(response);
+			document.getElementById('response').innerHTML = response
+		},
+		onException:function(errorObj){
+			alert("error: " + errorObj);
+		}
+});
+    return false;
+}
+</script>
+<form id="dictForm" onsubmit="return yadRpcTranslate()">
+<input name="query" type="text" style="width:100%" />
+<input type="button" onclick="run()" value="Run!" />
+</form>
+<pre id="response"></pre>

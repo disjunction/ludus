@@ -1,0 +1,33 @@
+<project basedir=".." default="build">
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="bin.dir" value="${basedir}/bin" />
+	<property name="lib.dir" value="${basedir}/../lib" />
+	
+	<path id="libs">
+			<pathelement location="${lib.dir}/tay.jar" />
+			<pathelement location="${lib.dir}/reyad.jar" />
+			<pathelement location="${lib.dir}/quizzer.jar" />
+			<pathelement location="${lib.dir}/java-getopt-1.0.13.jar" />
+	</path>
+	
+	<target name="classes">
+        <mkdir dir="${bin.dir}" />
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" includeantruntime="false">
+			<classpath refid="libs" />
+		</javac>
+	</target>
+
+    <target name="jar" depends="classes">
+        <jar destfile="${lib.dir}/quizzer.reyad.jar" basedir="${bin.dir}">
+        </jar>
+    </target>
+
+    <target name="build">
+        <antcall target="jar" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${bin.dir}" />
+        <delete file="${lib.dir}/quizzer.reyad.jar" />
+    </target>
+</project>

@@ -1,0 +1,17 @@
+@import url("reyode.css");
+
+#topContainer {
+	margin: 0 auto 0 auto;
+	background-color: white;
+	font-size: 10pt;
+} 
+
+input[type="button"] {
+	border: 1px solid #000;
+	padding: 7px;
+	background: #bbb;
+}
+
+input[type="button"]:hover {
+	background: #cdf;
+}

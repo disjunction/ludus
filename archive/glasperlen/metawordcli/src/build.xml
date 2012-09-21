@@ -1,0 +1,18 @@
+<project basedir=".." default="build">
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="dest.dir" value="${basedir}/bin" />
+	<property name="lib.dir" value="${basedir}/../lib" />
+	
+	<path id="libs">
+	    <pathelement location="${basedir}/../mire/bin" />
+		<pathelement location="${basedir}/../metaword/bin" />
+		<pathelement location="${lib.dir}/jline-0.9.94.jar" />
+		<pathelement location="${lib.dir}/java-getopt-1.0.13.jar" />
+	</path>
+	
+	<target name="build">
+		<javac srcdir="${src.dir}" destdir="${dest.dir}">
+			<classpath refid="libs" />
+		</javac>
+	</target>
+</project>

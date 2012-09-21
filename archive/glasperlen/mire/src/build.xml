@@ -1,0 +1,16 @@
+<project basedir=".." default="build">
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="dest.dir" value="${basedir}/bin" />
+	<property name="lib.dir" value="${basedir}/../lib" />
+	
+	<path id="core.class.path">
+			<pathelement location="${lib.dir}/js.original.jar" />
+			<pathelement location="${lib.dir}/mysql.jar" />
+	</path>
+	
+	<target name="build">
+		<javac srcdir="${src.dir}" destdir="${dest.dir}">
+			<classpath refid="core.class.path" />
+		</javac>
+	</target>
+</project>

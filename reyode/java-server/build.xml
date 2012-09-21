@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="web" default="build">
+    <description>
+        Project Ludus
+    </description>
+
+ <target name="build">
+	<exec executable="ant" dir="Tay/src" />
+	<exec executable="ant" dir="Reyad/src" />
+	<exec executable="ant" dir="Quizzer/src" />
+	<exec executable="ant" dir="QuizzerReyad/src" />
+ </target>
+
+ <target name="tomcat" depends="build">
+	<exec executable="sudo">
+		<arg line="/etc/init.d/tomcat6" />
+		<arg line="restart" />
+	</exec>
+ </target>
+</project>

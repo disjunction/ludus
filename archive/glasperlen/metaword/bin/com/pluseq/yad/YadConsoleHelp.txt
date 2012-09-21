@@ -1,0 +1,34 @@
+Commands:
+   help - this screen 
+   parse <source file> <output XML file>
+   read <XML file>
+   simpleTrans <fromLang> <toLang> - generate lookup table from imported data
+   resimpleTrans <fromLang> <toLang> - generate reversed translations 
+   trans <spelling>
+   word <spelling> - looks for given spelling, generates as current MWQ
+   sign <sign> - looks for the given sign, generates MWQ
+   truncate - truncate current DB tables
+   
+MWQ:
+   mwq - show stats for the current MWQ
+   mwq set <query> - set given query as current 
+   mwq count [query] - set query as current and show count
+   mwq show [query] - set query as current and show words
+
+Lists:
+   list - show contents of the current list
+   list stats - show short stats of the current list
+   list clear
+   list subtract - subtract current MWQ from the list
+   list add - add current MWQ to current list
+   list save <filename> - save list to a file
+   list load <filename> - load list from a file
+   list tag add <tag> - add a tag to all words in the list
+   list tag clear <tag> - remove a tag from all words in the list
+
+Quiz:
+   quiz - show current quiz stats
+   quiz start - start current quiz
+   quiz <N> - set number of question in session
+   quiz variants <N> - set number of variants per question
+   quiz load <filename> - load words from list file 

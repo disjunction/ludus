@@ -1,0 +1,31 @@
+<project basedir=".." default="build">
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="bin.dir" value="${basedir}/bin" />
+	<property name="lib.dir" value="${basedir}/../lib" />
+	
+	<path id="libs">
+			<pathelement location="${lib.dir}/mysql.jar" />
+	</path>
+	
+	<target name="classes">
+        <mkdir dir="${bin.dir}" />
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" includeantruntime="false">
+			<classpath refid="libs" />
+		</javac>
+	</target>
+
+    <target name="jar" depends="classes">
+        <jar destfile="${lib.dir}/tay.jar" basedir="${bin.dir}">
+        </jar>
+    </target>
+
+    <target name="build">
+        <antcall target="jar" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${bin.dir}" />
+        <delete file="${lib.dir}/quizzer.jar" />
+    </target>
+
+</project>

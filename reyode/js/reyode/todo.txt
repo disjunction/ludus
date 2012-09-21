@@ -1,0 +1,22 @@
+Project reyode real
+ - ? css
+ - + remember login (cookie)
+ - points
+ - client messaging (UI) - about current activities
+ - timeout before next quiz
+ - timeout for wrong answer
+
+Redesign Mire based on Reyode experience
+ - guice?
+ - expresjs?
+
+Ludus quizzer
+ - maths quiz generator
+ - context concept
+ - knowledge areas
+ - predefined quizzes
+ - find similar question
+ - personalized quiz history
+ - personalized quiz queries (filter? personalized weights?)
+
+Create Doctrine on new Mire

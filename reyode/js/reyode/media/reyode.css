@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+input[type="button"] {
+	color: #000;
+	border: 1px solid #000;
+	background: #bbb;
+}
+
+#topMessage {
+	font-size: 10pt;
+	font-face: Arial, Helvetica;
+	height: 20px;
+	font-weight: bold;
+}
+
+#message {
+	font-size: 10pt;
+	font-face: Arial, Helvetica;
+}
+
+span.correct {
+	color: #372;
+}
+
+span.incorrect {
+	color: #732;
+}
+
+
+#quiz p {
+	font-family: Courier;
+}
+
+#quiz input.variant {
+	display: block;
+	width: 200px;
+	margin: 3px;
+}

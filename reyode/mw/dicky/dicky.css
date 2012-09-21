@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+dt, dd {
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+dt { width: 150px; float: left; margin-right: 4em; }
+
+dl {
+	clear: both;
+}
+
+dt .spelling, dd .spelling {
+	font-weight: bold;
+}
+
+dt .genderf, dd .genderf { color: #d70; }
+dt .genderm, dd .genderm { color: #174; }
+dt .gendern, dd .gendern { color: #999; }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Reyode simple client</title>
+    </head>
+    <body>
+    <script>
+    	var cssName = 'desktop';
+    	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+    		cssName = 'mobile';
+    	}
+		document.write('<link rel="stylesheet" href="media/' + cssName + '.css" />');
+    
+		function clickVariant(element) {
+			clientController.respond(element.value);
+		}
+	</script>
+        <div id="topContainer">
+        	<div style="display:none" id="connecting">connecting...</div>
+        	
+        	<div style="display:none" id="welcome">
+        		<h1>Welcome!</h1>
+        		<p>Your name: <span id="nickname">...</span></p>
+        		<input type="button" id="otherName" value="Other name"/>
+        		<input type="button" id="next" value="Next >"/>
+        	</div>
+        	
+        	<div style="display:none" id="selectGame">
+        		<h1>select game</h1>
+        		Direction:<br/>
+        		<select name="selectDirection" id="selectDirection">
+        			<option value="ende">en -> de</option>
+        			<option value="rude">ru -> de</option>
+        			<option value="deen">de -> en</option>
+        			<option value="ruen">ru -> en</option>
+        		</select>
+        		<br/>
+        		<input type="button" id="start" value="PLAY!"/>
+        	</div>
+        	
+        	<div style="display:none" id="quiz">
+        		<div id="topMessage"></div>
+        		<div id="quizContent"></div>
+        		<div id="message"></div>
+        	</div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script src="lib/require.js"></script>
+        <script src="http://ludus.reyode:1337/socket.io/socket.io.js"></script>
+        <script>
+        requirejs({
+        				baseUrl: '/lib/'
+        		   },
+        			['reyode/bootstrap',
+                   'client/ClientController',
+                   'client/Layout',
+                   'client/View',
+                   'client/view/Connecting',
+                   'client/view/Welcome',
+                   'client/view/Quiz',
+                   'client/view/SelectGame'
+                   ],
+        		function() {
+        			Reyode.Bootstrap.run(function(){
+        		    	clientController = new Reyode.Client.ClientController();
+        		    	clientController.connect();
+        			});
+        		});
+        </script>
+    </body>
+</html>

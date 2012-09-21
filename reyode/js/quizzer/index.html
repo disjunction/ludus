@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="css/reyad.css" />
+	<script src="js/jquery/jquery.min.js"></script>
+	<script src="js/quizzer/Reyad.js"></script>
+	<script src="js/quizzer/Reyad/Word.js"></script>
+	<script src="js/quizzer/Reyad/QuizSpinner.js"></script>
+	<script src="js/bootstrap.js"></script>
+	
+	<script src="js/rpc-client/rpc.js"></script>
+		<script>
+function clickVariant(element) {
+	if (element.value == spinner.correctAnswer) {
+		getQuestion();
+	} else {
+		alert('wrong, correct is ' + spinner.correctAnswer);
+	}
+}
+
+
+function initQuestion(data)
+{
+	spinner = Reyad.QuizSpinner.fromArray(data);
+	$('.reyad').html(spinner.draw());
+}
+
+function getQuestion() {
+	
+    var service = new rpc.ServiceProxy("http://ludus.js/reyad/xmlrpc", {
+        asynchronous: true,  //default value, but if otherwise error raised
+        protocol: "XML-RPC", //default value, but if otherwise error raised
+        sanitize: false,     //explicit false required, otherwise error raised
+        methods: ['Quizzer.getOne'],    //explicit list required, otherwise error raised
+        callbackParamName: 'callback'
+});
+    
+    service.Quizzer.getOne({params: [],
+		onSuccess: function(response){
+			initQuestion(response);
+		},
+		onException:function(errorObj){
+			alert("error: " + errorObj);
+		}});
+
+}
+
+
+	</script>
+</head>
+<body onload="getQuestion()">
+Qusetion:
+
+<div class="reyad">
+	
+</div>
+</body>
+</html>
